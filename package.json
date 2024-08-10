@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4"
+  },
+  "name": "nightbot-api",
+  "version": "1.0.0",
+  "description": "nightbot apis",
+  "main": "index.js",
+  "scripts": {
+    "prod": "pm2 start ./src/index.ts --name conversational_service --interpreter ./node_modules/.bin/ts-node --no-daemon",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumeetKamble1503/Nightbot-API.git"
+  },
+  "keywords": [
+    "nodeJS",
+    "serverless"
+  ],
+  "author": "SK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumeetKamble1503/Nightbot-API/issues"
+  },
+  "homepage": "https://github.com/SumeetKamble1503/Nightbot-API#readme"
+}

@@ -1,0 +1,16 @@
+service: nightbot-serverless-lambda
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+  region: us-east-1
+  lambdaHashingVersion: 20201221
+
+functions:
+  nightbot:
+    handler: handler.nightbot
+    events:
+      - http:
