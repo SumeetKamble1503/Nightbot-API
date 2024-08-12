@@ -8,6 +8,6 @@ const quotesController = require("../controllers/quotesController");
 router.get("/get-random-quote", quotesController.getRandomQuote);
 
 // Example route for getting a single user by ID
-router.get("/add-random-quote", quotesController.addQuote);
+router.get("/add-quote", quotesController.addQuote);
 
 module.exports = router;

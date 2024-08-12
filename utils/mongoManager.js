@@ -1,7 +1,9 @@
 const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv").config();
 
-const mongo_uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const mongo_uri =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://gimayoh647:gimayoh647@nightbot-cluster.zq04y.mongodb.net";
 
 class MongoManager {
   constructor(dbname) {

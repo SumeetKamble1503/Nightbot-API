@@ -42,4 +42,50 @@ exports.getRandomQuote = async (req, res) => {
   }
 };
 
-exports.addQuote = async (req, res) => {};
+// long short mapping
+const mapping = {
+  January: "Jan",
+  February: "Feb",
+  March: "Mar",
+  April: "Apr",
+  May: "May",
+  June: "Jun",
+  July: "July",
+  August: "Aug",
+  September: "Sep",
+  October: "Oct",
+  November: "Nov",
+  December: "Dec",
+};
+
+const getDateString = async () => {
+  const date = new Date();
+  const month = date.toLocaleString("default", { month: "long" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${day} ${mapping[month]} ${year}`;
+};
+
+exports.addQuote = async (req, res) => {
+  try {
+    let x = await getDateString();
+    console.log(x);
+    console.log(req.query);
+    const crypto = require("crypto");
+    const id = crypto.randomBytes(16).toString("hex");
+    const quote = req.query.quote;
+    let quoteObj = {
+      id: `random_${id}`,
+      quote: quote,
+      date: x,
+      last_used: false,
+    };
+    const mongo_core_workspace_db = new MongoManager("cyano");
+    await mongo_core_workspace_db.init();
+    await mongo_core_workspace_db.insert_one("quotes", quoteObj);
+    res.status(200).send("Quote added successfully");
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Internal Server Error ~ Sasta server Quote");
+  }
+};
