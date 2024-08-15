@@ -21,7 +21,7 @@ app.use(`${commonApiEndpoint}/goals`, goalsRouter);
 const port = 5000;
 app.get("/health-check", async (req, res) => {
   // send status 200 and ok
-  res.status(200).send("ok");
+  res.status(200).send("Api Status : ok");
 });
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
