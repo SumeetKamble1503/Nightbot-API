@@ -91,7 +91,7 @@ exports.updateGoal = async (req, res) => {
       goal_description: searchQuery,
     });
     if (goal === null) {
-      res.status(200).send("No goals found");
+      return res.status(200).send("No goals found");
     } else {
       goal.current_donation += increment_value;
     }
