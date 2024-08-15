@@ -14,7 +14,9 @@ const commonApiEndpoint = "/api/v1";
 
 // user routers
 const quotesRouter = require("./routers/quotes");
+const goalsRouter = require("./routers/goals");
 app.use(`${commonApiEndpoint}/quotes`, quotesRouter);
+app.use(`${commonApiEndpoint}/goals`, goalsRouter);
 
 const port = 5000;
 app.get("/health-check", async (req, res) => {
