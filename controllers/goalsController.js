@@ -88,7 +88,10 @@ exports.updateGoal = async (req, res) => {
     const mongo_core_workspace_db = new MongoManager("cyano");
     await mongo_core_workspace_db.init();
     let goal = await mongo_core_workspace_db.find_one("goals", {
-      goal_description: searchQuery,
+      $or: [
+        { goal_description: { $regex: searchQuery, $options: "i" } },
+        { product: { $regex: searchQuery, $options: "i" } },
+      ],
     });
     if (goal === null) {
       return res.status(200).send("No goals found");
